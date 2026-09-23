@@ -604,7 +604,7 @@ body.case-page::after {
 .quiz-cards {
   flex: 4;
   position: relative;
-  height: 440px;
+  height: min(74vh, 660px);
 }
 
 /* 毛玻璃卡片：深色玻璃（加深后白字清晰），绝对定位堆叠 */
@@ -779,6 +779,7 @@ body.case-page::after {
 
   .quiz-side {
     width: 100%;
+    flex: none;   /* 纵向排列时避免 flex-basis 0% 把高度塌缩为 0 */
     flex-direction: column;
     gap: 10px;
   }
@@ -808,6 +809,7 @@ body.case-page::after {
   .quiz-cards {
     width: 100%;
     height: 600px;
+    flex: none;   /* 纵向排列时避免 flex-basis 0% 覆盖 height */
   }
 
   .quiz-card {
@@ -822,6 +824,137 @@ body.case-page::after {
   .quiz-card .option {
     flex: 0 0 auto;
     padding: 12px 14px;
+  }
+}
+
+/* ===== 匹配结果卡片（case.html 卡片4）：左大卡 + 右 2×2 田字格 ===== */
+
+/* 结果内容区：上方放 5 张赛道卡片，底部剩余空间全部留白（桌面端约占 1/3） */
+.quiz-card .result-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;   /* 让卡片行高能以容器宽度（cqw）为基准 */
+}
+
+.quiz-card .result-area::after {
+  content: '';
+  flex: 1;   /* 底部预留留白 */
+}
+
+/* 卡片行：行高由宽度按 4:3 几何关系推出（H = 3W/8 - 间距/4），
+   保证左侧大卡高度与右侧田字格上下两卡叠加总高精确对齐 */
+.quiz-card .result-cards {
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(8px, 1.4vw, 14px);
+  height: calc(37.5cqw - clamp(2px, 0.35vw, 3.5px));
+}
+
+/* 左侧大卡：高度拉伸填满行高，宽度由 4:3 比例决定 */
+.quiz-card .track-main {
+  flex: none;
+  align-self: stretch;
+  aspect-ratio: 4 / 3;
+}
+
+/* 右侧田字格：两列自动换行 */
+.quiz-card .track-grid {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.4vw, 14px);
+}
+
+.quiz-card .track-grid .track-card {
+  width: calc(50% - clamp(8px, 1.4vw, 14px) / 2);
+  aspect-ratio: 4 / 3;
+}
+
+/* 赛道卡片通用：4:3 横版背景图、微圆角、60% 蒙版、两行文字靠左 */
+.quiz-card .track-card {
+  position: relative;
+  box-sizing: border-box;   /* padding 计入 4:3 盒内，保证比例精确 */
+  overflow: hidden;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(6px, 1.2vw, 12px);
+  transition: transform 0.25s ease;
+}
+
+.quiz-card .track-card:hover {
+  transform: scale(1.03);
+}
+
+/* 图片蒙版：透明度 60% */
+.quiz-card .track-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* 两行文字：浮于蒙版之上，整体靠左 */
+.quiz-card .track-card span {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.quiz-card .track-rate {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+}
+
+.quiz-card .track-name {
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* 各赛道背景图（按 data-track 匹配，图片均在 img 文件夹） */
+.quiz-card .track-card[data-track="animal"]  { background-image: url(img/animalbg.jpg); }
+.quiz-card .track-card[data-track="forest"]  { background-image: url(img/forestbg.jpg); }
+.quiz-card .track-card[data-track="fish"]    { background-image: url(img/fishbg.jpg); }
+.quiz-card .track-card[data-track="plant"]   { background-image: url(img/plantbg.jpg); }
+.quiz-card .track-card[data-track="digital"] { background-image: url(img/digitalbg.jpg); }
+
+/* ===== 赛道详情页（animal/forest/fish/plant/digital.html）：subpage + 居中 h1 ===== */
+
+.track-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #16423c;
+}
+
+/* 窄屏兜底：卡片行仍保持桌面式左大卡 + 右田字格布局（纯宽度驱动，任意宽度不溢出），
+   结果区超长可滚动 */
+@media (max-width: 900px) {
+  .quiz-card .result-area {
+    overflow-y: auto;
+  }
+}
+
+/* 不支持容器查询的旧浏览器兜底：卡片行退回内容自然高度 */
+@supports not (container-type: inline-size) {
+  .quiz-card .result-cards {
+    height: auto;
   }
 }
 
