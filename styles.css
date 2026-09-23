@@ -880,7 +880,7 @@ body.case-page::after {
   box-sizing: border-box;   /* padding 计入 4:3 盒内，保证比例精确 */
   overflow: hidden;
   border-radius: 10px;
-  background-position: center;
+  background-position: center 60%;   /* 图片整体下移一点（原来是 center） */
   background-size: cover;
   display: flex;
   flex-direction: column;
