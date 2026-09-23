@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案例匹配 - 乡智新生</title>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="case-page">
+
+  <!-- 顶部导航栏：沿用全站 header -->
+  <header>
+    <nav>
+      <a class="nav-items" href="index.html">首页</a>
+      <a class="nav-items" href="project.html">项目定位</a>
+      <a class="nav-items active" href="case.html">案例匹配</a>
+      <a class="nav-items" href="cases.html">案例库</a>
+      <a class="nav-items" href="cobuild.html">案例共建</a>
+    </nav>
+  </header>
+
+  <!-- 视口两侧翻页箭头：与其他子页面一致 -->
+  <div class="slider">
+    <a href="project.html"><i class="fa-solid fa-chevron-left"></i></a>
+    <a href="cases.html"><i class="fa-solid fa-chevron-right"></i></a>
+  </div>
+
+  <!-- 问卷主布局：左侧进度导航 1 份 / 右侧问卷卡片 4 份 -->
+  <main class="quiz-wrap">
+
+    <!-- ========== 左侧：进度导航区 ========== -->
+    <aside class="quiz-side">
+      <div class="step-btns">
+        <button class="step-btn" data-step="0">拥有资源</button>
+        <button class="step-btn" data-step="1">创业方向</button>
+        <button class="step-btn" data-step="2">当前阶段</button>
+        <button class="step-btn" data-step="3">匹配结果</button>
+      </div>
+      <!-- 垂直进度条：均匀分 4 段，每完成一题前进 1/4 -->
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+    </aside>
+
+    <!-- ========== 右侧：堆叠问卷卡片区 ========== -->
+    <section class="quiz-cards">
+
+      <!-- 卡片1：拥有资源 -->
+      <article class="quiz-card" data-card="0" data-multi>
+        <button class="card-up" aria-label="上一题"><i class="fa-solid fa-chevron-up"></i></button>
+        <h2 class="card-title">您目前拥有哪些资源？</h2>
+        <div class="card-divider"></div>
+        <div class="options">
+          <div class="option-col">
+            <button class="option" data-value="土地资源">土地资源</button>
+            <button class="option" data-value="农产品">农产品</button>
+            <button class="option" data-value="养殖资源">养殖资源</button>
+            <button class="option" data-value="乡村空间">乡村空间</button>
+          </div>
+          <div class="option-col">
+            <button class="option" data-value="AI能力">AI能力</button>
+            <button class="option" data-value="内容能力">内容能力</button>
+            <button class="option" data-value="销售渠道">销售渠道</button>
+          </div>
+        </div>
+        <button class="card-down" aria-label="确认并进入下一题"><i class="fa-solid fa-chevron-down"></i></button>
+      </article>
+
+      <!-- 卡片2：创业方向 -->
+      <article class="quiz-card" data-card="1" data-multi>
+        <button class="card-up" aria-label="上一题"><i class="fa-solid fa-chevron-up"></i></button>
+        <h2 class="card-title">您想往哪个方向发展？</h2>
+        <div class="card-divider"></div>
+        <div class="options">
+          <div class="option-col">
+            <button class="option" data-value="品牌打造">品牌打造</button>
+            <button class="option" data-value="电商销售">电商销售</button>
+            <button class="option" data-value="养殖创业">养殖创业</button>
+          </div>
+          <div class="option-col">
+            <button class="option" data-value="农业服务">农业服务</button>
+            <button class="option" data-value="数字农业">数字农业</button>
+            <button class="option" data-value="乡村体验">乡村体验</button>
+          </div>
+        </div>
+        <button class="card-down" aria-label="确认并进入下一题"><i class="fa-solid fa-chevron-down"></i></button>
+      </article>
+
+      <!-- 卡片3：当前阶段 -->
+      <article class="quiz-card" data-card="2">
+        <button class="card-up" aria-label="上一题"><i class="fa-solid fa-chevron-up"></i></button>
+        <h2 class="card-title">您目前处于哪个阶段？</h2>
+        <div class="card-divider"></div>
+        <div class="options">
+          <div class="option-col">
+            <button class="option option-rich" data-value="想法阶段">
+              <span class="opt-title">想法阶段</span>
+              <span class="opt-desc">有创业想法，但还未落地实施</span>
+            </button>
+            <button class="option option-rich" data-value="已有产品">
+              <span class="opt-title">已有产品</span>
+              <span class="opt-desc">已有农产品或服务，寻求品牌化和规模化</span>
+            </button>
+          </div>
+          <div class="option-col">
+            <button class="option option-rich" data-value="已有客户">
+              <span class="opt-title">已有客户</span>
+              <span class="opt-desc">已有稳定客户群体，希望拓展渠道和规模</span>
+            </button>
+            <button class="option option-rich" data-value="产业基础">
+              <span class="opt-title">产业基础</span>
+              <span class="opt-desc">已有一定产业基础，寻求转型升级</span>
+            </button>
+          </div>
+        </div>
+        <button class="card-down" aria-label="确认并查看匹配结果"><i class="fa-solid fa-chevron-down"></i></button>
+      </article>
+
+      <!-- 卡片4：匹配结果（内容留白，仅保留卡片框架） -->
+      <article class="quiz-card" data-card="3">
+        <button class="card-up" aria-label="上一题"><i class="fa-solid fa-chevron-up"></i></button>
+        <h2 class="card-title">匹配结果</h2>
+        <div class="card-divider"></div>
+        <!-- 结果内容后续填充 -->
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ========== 原生 JS：问卷交互逻辑 ========== -->
+  <script>
+    /* ---------- 状态 ---------- */
+    const cards = document.querySelectorAll('.quiz-card');      // 4 张卡片
+    const stepBtns = document.querySelectorAll('.step-btn');    // 左侧 4 个步骤按钮
+    const progressFill = document.querySelector('.progress-fill');
+    const total = cards.length;
+    let current = 0;                                            // 当前步骤索引
+    const selections = new Array(total).fill(null);             // 每步选中的选项值
+
+    /* ---------- 渲染：卡片堆叠、按钮完成态、进度条 ----------
+       高亮规则：步骤索引 <= current 的按钮为深绿（含当前步骤），回退/跳转自动取消后续完成态 */
+    function render() {
+      cards.forEach((card, i) => {
+        if (i < current) {
+          // 已走过的卡片：上移淡出，不可交互
+          card.style.transform = 'translateY(-28px)';
+          card.style.opacity = '0';
+          card.style.zIndex = 10;
+          card.style.pointerEvents = 'none';
+        } else {
+          // 当前卡片在最上层；后续卡片每层向下偏移 16px，露出边框形成堆叠
+          card.style.transform = 'translateY(' + (i - current) * 16 + 'px)';
+          card.style.opacity = '1';
+          card.style.zIndex = 40 - (i - current);
+          card.style.pointerEvents = 'auto';
+        }
+      });
+
+      // 左侧按钮：当前及已完成 → 深绿，未完成 → 灰
+      stepBtns.forEach((btn, i) => btn.classList.toggle('done', i <= current));
+
+      // 进度条：第1题 1/4，到匹配结果走完 4/4；同时写 height（桌面竖条）和 width（移动端横条）
+      const pct = ((current + 1) / total) * 100 + '%';
+      progressFill.style.height = pct;
+      progressFill.style.width = pct;
+    }
+
+    /* ---------- 选项选择：第1/2题多选（toggle），第3题单选（互斥） ---------- */
+    document.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const card = opt.closest('.quiz-card');
+        const idx = +card.dataset.card;
+        const value = opt.dataset.value;
+        if (card.dataset.multi !== undefined) {
+          // 多选：可选中多个，再次点击取消
+          if (!Array.isArray(selections[idx])) selections[idx] = [];
+          const arr = selections[idx];
+          const pos = arr.indexOf(value);
+          if (opt.classList.toggle('selected')) {
+            if (pos === -1) arr.push(value);
+          } else if (pos !== -1) {
+            arr.splice(pos, 1);
+          }
+        } else {
+          // 单选：同一张卡内互斥
+          card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          selections[idx] = value;
+        }
+      });
+    });
+
+    /* ---------- 下一题：多选需至少 1 项，单选需选中 1 项 ---------- */
+    document.querySelectorAll('.card-down').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = +btn.closest('.quiz-card').dataset.card;
+        const sel = selections[idx];
+        if (Array.isArray(sel) ? sel.length === 0 : sel === null) return;   // 未选择不前进
+        current = idx + 1;
+        render();
+      });
+    });
+
+    /* ---------- 上一题：完成状态取消、进度回退 ---------- */
+    document.querySelectorAll('.card-up').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = +btn.closest('.quiz-card').dataset.card;
+        current = Math.max(0, idx - 1);
+        render();
+      });
+    });
+
+    /* ---------- 左侧导航：点击直接跳转对应步骤 ---------- */
+    stepBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        current = +btn.dataset.step;
+        render();
+      });
+    });
+
+    render();
+  </script>
+
+</body>
+</html>

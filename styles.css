@@ -1,0 +1,827 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-image: url(img/bac\ 4.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(transparent 50%, rgb(0, 0, 0));
+}
+
+/* Sub-pages: solid gray background, nav + arrows only */
+body.subpage {
+  background-image: none;
+  background-color: #a6adac;
+  animation: none;
+}
+
+body.subpage::after {
+  display: none;
+}
+
+/* Sub-page text: sits centered between the slider arrows */
+body.subpage p {
+  color: #16423c;
+  text-shadow: none;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* Background-images */
+
+.content img {
+  position: absolute;
+  bottom: -12%;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 5%;
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav a {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: rgb(53, 53, 53);
+  width: 110px;
+  text-align: center;
+  padding: 15px 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.active {
+  background-color: #16423c;
+  color: white;
+}
+
+nav a:hover {
+  background-color: #16423c;
+  color: white;
+}
+
+nav:hover > a:not(:hover) {
+  background-color: transparent;
+  color: rgb(53, 53, 53);
+}
+
+.title {
+  position: absolute;
+  top: 40%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index:10;
+  
+}
+
+.title h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 15px;
+  color: white;
+  text-align: center;
+  text-shadow:0 4px 20px rgba(0,0,0,0.6);
+}
+
+.title h1 {
+  font-size: 10rem;
+  font-weight: 800;
+  letter-spacing: 24px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin: -20px 0;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+p {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  width: 70%;
+  text-align: center;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.info-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 18%;
+  z-index: 1;
+}
+
+.cta {
+  position: absolute;
+  bottom: 8%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.cta button {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  height: 50px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.cta button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color:rgb(53, 53, 53);
+}
+
+.slider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  padding-inline: 15%;
+}
+.slider i {
+  font-size: 36px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.slider a:hover i {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animations */
+@keyframes bottomIn {
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.back-1 {
+  animation: bottomIn 1s ease-out forwards;
+}
+
+.back-2 {
+  animation: bottomIn 1.3s ease-out forwards;
+}
+
+.back-3 {
+  animation: bottomIn 1.5s ease-out forwards;
+}
+
+@keyframes bottomInText {
+  from {
+    transform: translateY(500px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h3 {
+  animation: bottomInText 1s ease-out forwards;
+}
+
+h1 {
+  animation: bottomInText 1.2s ease-out forwards;
+}
+
+p {
+  animation: bottomInText 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+button {
+  animation: bottomInText 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+@keyframes backgroundImage {
+  from {
+    background-position: top;
+  }
+  to {
+    background-position: 50% 14%;
+  }
+}
+
+body {
+  animation: backgroundImage 1.6s ease-out forwards;
+}
+
+@keyframes topIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+nav {
+  animation: topIn 1.2s ease-out forwards;
+}
+
+@keyframes zoomOut{
+  from {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.slider {
+  animation: zoomOut 1.2s ease-out forwards;
+}
+
+/* ===== 项目定位页（project.html）：全屏背景图 + 毛玻璃容器 ===== */
+
+body.card-page {
+  background-image: url(img/bg1.jpg);
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* 背景沿用全局 backgroundImage 动画：与首页一致，图片向上滑动 */
+}
+
+body.card-page::after {
+  display: none;
+}
+
+/* 玻璃容器整体从下方滑入 */
+@keyframes cardUp {
+  from {
+    transform: translateY(60vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 毛玻璃主容器：覆盖标题到图集区域，内容偏上、底部留白 */
+.glass-card {
+  width: min(900px, 80vw);
+  margin-top: 60px;
+  padding: 24px 56px 48px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  animation: cardUp 1.2s ease-out forwards;
+}
+
+/* 一级大标题 */
+.glass-card .page-title {
+  animation: none;
+  opacity: 1;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #16423c;
+}
+
+/* 标题下方描述文本 */
+.glass-card .page-desc {
+  animation: none;
+  opacity: 1;
+  width: auto;
+  max-width: 860px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: none;
+}
+
+/* 左右分栏：左侧案例标题 / 右侧轮播 */
+.glass-card .case-section {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-top: 44px;
+}
+
+.glass-card .case-text {
+  flex: 0 0 30%;
+  text-align: left;
+  padding-left: 28px;
+  transform: translateY(-30px);
+}
+
+.glass-card .case-text h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.glass-card .case-sub {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 轮播组件：层叠图片集 + 下方居中按钮 */
+.glass-card .carousel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glass-card .carousel-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  animation: none;
+  opacity: 1;
+  transition: background 0.2s;
+}
+
+.glass-card .carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* 图片集区域：无背景，仅四周留白 */
+.glass-card .carousel-shell {
+  padding: 14px;
+}
+
+/* 层叠图片集：中间完整主图 + 两侧各两张局部露出 */
+.glass-card .carousel-stack {
+  position: relative;
+  width: 470px;
+  height: 200px;
+}
+
+.glass-card .carousel-stack img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 260px;
+  height: 200px;
+  object-fit: cover;
+  border: 5px solid #b9d4ae;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s ease;
+}
+
+.glass-card .carousel-stack .slide-main {
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 5;
+}
+
+.glass-card .carousel-stack .slide-left1 {
+  transform: translate(calc(-50% - 70px), -50%) scale(0.85);
+  z-index: 4;
+}
+
+.glass-card .carousel-stack .slide-right1 {
+  transform: translate(calc(-50% + 70px), -50%) scale(0.85);
+  z-index: 4;
+}
+
+.glass-card .carousel-stack .slide-left2 {
+  transform: translate(calc(-50% - 145px), -50%) scale(0.7);
+  z-index: 3;
+}
+
+.glass-card .carousel-stack .slide-right2 {
+  transform: translate(calc(-50% + 145px), -50%) scale(0.7);
+  z-index: 3;
+}
+
+/* 翻页按钮：图片集下方中间并排 */
+.glass-card .carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .glass-card .case-section {
+    flex-direction: column;
+  }
+  .glass-card .case-text {
+    flex: none;
+    width: 100%;
+  }
+  .glass-card .carousel {
+    width: 100%;
+  }
+}
+
+/* ===== 案例匹配问卷页（case.html）：全屏背景 + 左进度导航 1 : 右堆叠问卷卡 4 ===== */
+
+body.case-page {
+  background-color: #16423c;   /* 深色基底：背景图 80% 透明度下透出 20% */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: none;
+}
+
+/* 背景图放在伪元素层：透明度 80%，保留上滑入场动画 */
+body.case-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(img/casebg.jpg) center / cover no-repeat;
+  opacity: 0.8;
+  animation: backgroundImage 1.6s ease-out forwards;
+}
+
+body.case-page::after {
+  display: none;
+}
+
+/* 问卷主布局：左侧 1 份 / 右侧 4 份，整体位于两侧翻页箭头之间，从下方滑入 */
+.quiz-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(1000px, 68vw);
+  animation: cardUp 1.2s ease-out forwards;
+}
+
+/* ---------- 左侧：进度导航区 ---------- */
+
+.quiz-side {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+}
+
+.step-btns {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 步骤按钮：初始灰色底，完成态 .done 切换深绿色 */
+.step-btn {
+  animation: none;
+  opacity: 1;
+  padding: 14px 10px;
+  border-radius: 14px;
+  background: rgba(128, 128, 128, 0.45);
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.step-btn:hover {
+  background: rgba(128, 128, 128, 0.6);
+}
+
+.step-btn.done {
+  background: #16423c;
+}
+
+/* 垂直进度条：位于按钮右侧，均匀 4 段，每完成一题前进 1/4 */
+.progress-track {
+  width: 8px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 100%;
+  height: 0%;
+  background: #16423c;
+  transition: height 0.35s ease, width 0.35s ease;
+}
+
+/* ---------- 右侧：堆叠问卷卡片区 ---------- */
+
+.quiz-cards {
+  flex: 4;
+  position: relative;
+  height: 440px;
+}
+
+/* 毛玻璃卡片：深色玻璃（加深后白字清晰），绝对定位堆叠 */
+.quiz-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 48px 44px 76px;
+  background: rgba(16, 42, 35, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  transition: transform 0.45s ease, opacity 0.3s ease;
+}
+
+/* 右上角：回到上一题 */
+.quiz-card .card-up {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  animation: none;
+  opacity: 1;
+  transition: background 0.2s;
+}
+
+.quiz-card .card-up:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* 第一张卡不显示上一题按钮，最后一张卡不显示下一题按钮 */
+.quiz-card[data-card="0"] .card-up,
+.quiz-card[data-card="3"] .card-down {
+  visibility: hidden;
+}
+
+/* 卡片大标题：白色、左对齐、放大一个字号；下方水平细分割线 */
+.quiz-card .card-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #fff;
+}
+
+.quiz-card .card-divider {
+  width: 70%;
+  height: 1px;
+  margin: 16px 0 24px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* 选项区：左右两栏 */
+.quiz-card .options {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  gap: 14px;
+}
+
+.quiz-card .option-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 选项：纯文字无边框底色，白字常规字号；选中后浅绿字 */
+.quiz-card .option {
+  flex: 1;
+  animation: none;
+  opacity: 1;
+  padding: 12px 4px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.quiz-card .option:hover {
+  color: #b9d4ae;
+}
+
+.quiz-card .option.selected {
+  color: #b9d4ae;
+}
+
+/* 卡片3：加粗主标题 + 小字描述 */
+.quiz-card .option-rich {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.quiz-card .opt-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.quiz-card .opt-desc {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.quiz-card .option.selected .opt-desc {
+  color: #b9d4ae;
+  opacity: 0.75;
+}
+
+/* 底部居中：确认进入下一题 */
+.quiz-card .card-down {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  animation: none;
+  opacity: 1;
+  transition: background 0.2s;
+}
+
+.quiz-card .card-down:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- 移动端适配：左右布局改为上下布局 ---------- */
+
+@media (max-width: 900px) {
+  body.case-page {
+    align-items: flex-start;
+    overflow: auto;
+    padding: 90px 0 30px;
+  }
+
+  .quiz-wrap {
+    flex-direction: column;
+    gap: 24px;
+    width: 92vw;
+  }
+
+  .quiz-side {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .step-btns {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .step-btn {
+    flex: 1 1 45%;
+    padding: 12px 10px;
+    font-size: 15px;
+  }
+
+  /* 进度条改为水平横条 */
+  .progress-track {
+    width: 100%;
+    height: 6px;
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+  }
+
+  .quiz-cards {
+    width: 100%;
+    height: 600px;
+  }
+
+  .quiz-card {
+    padding: 44px 22px 76px;
+  }
+
+  .quiz-card .options {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .quiz-card .option {
+    flex: 0 0 auto;
+    padding: 12px 14px;
+  }
+}
+
